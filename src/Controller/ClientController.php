@@ -2,19 +2,41 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ClientType;
+use App\Entity\ApiClients;
+use App\Repository\ApiClientsRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ClientController extends AbstractController
 {
     /**
      * @Route("/client", name="app_client")
      */
-    public function index(): Response
+    public function index(ApiClientsRepository $apiClientsRepository, EntityManagerInterface $em, Request $request): Response
     {
+        $apiclients = new ApiClients();
+
+        $form = $this->createForm(ClientType::class, $apiclients);
+
+        $form->handleRequest($request);
+
+        
+        if ( $form->isSubmitted() && $form->isValid() )  {
+            $apiclients = $form->getData();
+
+            $em->persist($apiclients);
+            $em->flush();
+
+            return $this->redirectToRoute('app_client');
+        }
+
         return $this->render('client/index.html.twig', [
-            'controller_name' => 'ClientController',
+            'form' => $form->createView(),
+            'clients' => $apiClientsRepository->findAll(),
         ]);
     }
 }

@@ -3,18 +3,29 @@
 {% block title %}Hello ClientController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/apps/ecf_RAJA/src/Controller/ClientController.php'|file_link(0) }}">src/Controller/ClientController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/apps/ecf_RAJA/templates/client/index.html.twig'|file_link(0) }}">templates/client/index.html.twig</a></code></li>
-    </ul>
+<h2>Toutes les vidéos</h2>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+<div>client name - <!----></div>
+    {% for client in clients %}
+        <div class="col">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <a href="{{ path('app_client', {'id': client.client_id }) }}">
+                    <img src="{{ client.logo_url }}" class="card-img-top">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">client name - {{ client.name }}</h5>
+                    <div>client active - {{ client.active }}</div>
+                    <div>client mail - {{ client.client_mail }}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </div>
+
+
+<!-- Ajouter un client-->
+    <div class="mb-5 mt-5" id="addvideo">
+        <h2>Ajouter un client</h2>
+        {{ form(form) }}
+    </div>
 {% endblock %}
