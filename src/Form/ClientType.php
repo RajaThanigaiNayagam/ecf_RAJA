@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ClientType extends AbstractType
 {
@@ -19,7 +20,10 @@ class ClientType extends AbstractType
             ->add('client_secret', TextType::class)
             ->add('client_name', TextType::class)
             ->add('client_mail', UrlType::class)
-            ->add('active', TextType::class)
+            ->add('active', CheckboxType::class, [
+                'label' => 'activé ou désactivé le client/partener',
+                 'label_attr' => ['class' => 'switch-custom'],
+              ])
             ->add('short_description', TextType::class)
             ->add('full_description', TextType::class)
             ->add('logo_url', TextType::class)
