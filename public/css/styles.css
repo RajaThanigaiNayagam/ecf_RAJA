@@ -8,10 +8,8 @@ body
 
 .center
 {
-	position: absolute;
-	top: 50%;
+	position: relative;
 	left: 50%;
-	transform: translate(-50%,-50%);
 }
 
 input[type="checkbox"]
@@ -81,7 +79,17 @@ input:checked[type="checkbox"]:after
 	color: #FFF;
 }
 
+input:checked[type="checkbox"]:hover{
+
+	background: #D97867;
+}
 
 input[type="text"]{
-	width: 100px;
+	width: 300px;
+	border-color: #739E32;
+} 
+
+input[type="text"]:hover{
+	width: 300px;
+	border-color: #AED77B;
 }

@@ -3,29 +3,50 @@
 {% block title %}Hello ClientController!{% endblock %}
 
 {% block body %}
-<h2>Toutes les vidéos</h2>
-<div class="row row-cols-1 row-cols-md-2 g-4">
-<div>client name - <!----></div>
+<h2>Tous les cl*ients</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     {% for client in clients %}
         <div class="col">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <a href="{{ path('app_client', {'id': client.client_id }) }}">
-                    <img src="{{ client.logo_url }}" class="card-img-top">
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
+                    <img src="{{ client.getLogoUrl() }}" class="card-img-top" width="50" height="50">
                 </a>
+                <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
+                <div>client active - {{ client.getActive() }}</div>
+                <div>client mail - {{ client.getClientMail() }}</div>
                 <div class="card-body">
-                    <h5 class="card-title">client name - {{ client.name }}</h5>
-                    <div>client active - {{ client.active }}</div>
-                    <div>client mail - {{ client.client_mail }}</div>
                 </div>
             </div>
         </div>
     {% endfor %}
 </div>
 
-
 <!-- Ajouter un client-->
-    <div class="mb-5 mt-5" id="addvideo">
-        <h2>Ajouter un client</h2>
-        {{ form(form) }}
-    </div>
+{{ form_start(form) }}
+	    <div class="row row-cols-1 row-cols-md-2 g-4">
+                {{ form_row(form.client_id, { 'label': 'Votre id', 'attr': { 'rows': 10 }  }) }}
+                {{ form_row(form.client_name, { 'label': 'Votre nom', 'attr': { 'rows': 10 } }) }}
+                {{ form_row(form.client_mail, { 'label': 'Votre e-mail', 'attr': { 'rows': 10 } }) }}
+                {{ form_row(form.active, { 'label': 'active ou non', 'attr': { 'rows': 10 } }) }}
+                {{ form_row(form.client_secret, { 'label': 'Votre secret code', 'attr': { 'rows': 10 } }) }}
+
+                
+                {{ form_row(form.short_description, { 'label': 'Votre short description' }) }}
+                {{ form_row(form.full_description, { 'label': 'Votre full description', 'attr': { 'rows': 6 } }) }}
+                {{ form_row(form.logo_url, { 'label': 'Votre logo url', 'attr': { 'rows': 8 } }) }}
+                {{ form_row(form.url, { 'label': 'Votre url', 'attr': { 'rows': 8 } }) }}
+
+                
+                {{ form_row(form.dpo, { 'label': 'Votre dpo' }) }}
+                {{ form_row(form.technical_contact, { 'label': 'Votre technical contact', 'attr': { 'rows': 6 } }) }}
+                {{ form_row(form.commercial_contact, { 'label': 'Votre commercial contact', 'attr': { 'rows': 8 } }) }}
+	    </div></br></br>
+
+         
+	    <div class="row row-cols-1 row-cols-md-2 g-4 center">       
+                {{ form_row(form.Submit, { 'label': 'submit' }) }}
+	    </div>
+
+{{ form_end(form) }}
+    
 {% endblock %}

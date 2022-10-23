@@ -31,7 +31,7 @@ class ClientType extends AbstractType
             ->add('dpo', TextType::class)
             ->add('technical_contact', TextType::class)
             ->add('commercial_contact', TextType::class)
-            ->add('install_id', TextType::class)
+            //->add('install_id', TextType::class)
             ->add('Submit', SubmitType::class);
         ;
     }
