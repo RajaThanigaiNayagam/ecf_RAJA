@@ -9,7 +9,14 @@ body
 .center
 {
 	position: relative;
-	left: 50%;
+	left: 40%;
+}
+
+.marginleft
+{
+	position: relative;
+	left: 30px;
+	align-content: center;
 }
 
 input[type="checkbox"]

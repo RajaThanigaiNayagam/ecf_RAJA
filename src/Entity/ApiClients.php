@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ApiClientsRepository;
+use App\Entity\ApiClients;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ApiClientsRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ApiClientsRepository::class)
@@ -38,7 +39,7 @@ class ApiClients
     private $client_mail;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $active;
 
@@ -135,12 +136,12 @@ class ApiClients
         return $this;
     }
 
-    public function getActive(): ?string
+    public function isActive(): ?bool
     {
         return $this->active;
     }
 
-    public function setActive(string $active): self
+    public function setActive(?bool $active): self
     {
         $this->active = $active;
 
@@ -238,12 +239,15 @@ class ApiClients
 
     public function setInstallId(ApiClientsGrants $install_id): self
     {
+
+        $client = new ApiClients();
         // set the owning side of the relation if necessary
         if ($install_id->getClientId() !== $this) {
             $install_id->setClientId($this);
         }
 
         $this->install_id = $install_id;
+        $client.setInstallId($install_id);
 
         return $this;
     }

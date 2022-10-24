@@ -3,11 +3,12 @@
 {% block title %}Hello ClientController!{% endblock %}
 
 {% block body %}
-<h2>Tous les cl*ients</h2>
+<h2>Tous les clients</h2>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    
     {% for client in clients %}
         <div class="col">
-            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+            <div class="card shadow p-3 mb-5 bg-white rounded  marginleft" style="width: 18rem;">
                 <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
                     <img src="{{ client.getLogoUrl() }}" class="card-img-top" width="50" height="50">
                 </a>
@@ -22,31 +23,30 @@
 </div>
 
 <!-- Ajouter un client-->
-{{ form_start(form) }}
-	    <div class="row row-cols-1 row-cols-md-2 g-4">
-                {{ form_row(form.client_id, { 'label': 'Votre id', 'attr': { 'rows': 10 }  }) }}
-                {{ form_row(form.client_name, { 'label': 'Votre nom', 'attr': { 'rows': 10 } }) }}
-                {{ form_row(form.client_mail, { 'label': 'Votre e-mail', 'attr': { 'rows': 10 } }) }}
-                {{ form_row(form.active, { 'label': 'active ou non', 'attr': { 'rows': 10 } }) }}
-                {{ form_row(form.client_secret, { 'label': 'Votre secret code', 'attr': { 'rows': 10 } }) }}
+    {{ form_start(form) }}
+	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 marginleft">
+                {{ form_row(form.client_id) }}
+                {{ form_row(form.client_name) }}
+                {{ form_row(form.client_mail) }}
+                {{ form_row(form.active) }}
+                {{ form_row(form.client_secret) }}
 
                 
-                {{ form_row(form.short_description, { 'label': 'Votre short description' }) }}
-                {{ form_row(form.full_description, { 'label': 'Votre full description', 'attr': { 'rows': 6 } }) }}
-                {{ form_row(form.logo_url, { 'label': 'Votre logo url', 'attr': { 'rows': 8 } }) }}
-                {{ form_row(form.url, { 'label': 'Votre url', 'attr': { 'rows': 8 } }) }}
+                {{ form_row(form.short_description) }}
+                {{ form_row(form.full_description) }}
+                {{ form_row(form.logo_url) }}
+                {{ form_row(form.url) }}
 
                 
-                {{ form_row(form.dpo, { 'label': 'Votre dpo' }) }}
-                {{ form_row(form.technical_contact, { 'label': 'Votre technical contact', 'attr': { 'rows': 6 } }) }}
-                {{ form_row(form.commercial_contact, { 'label': 'Votre commercial contact', 'attr': { 'rows': 8 } }) }}
+                {{ form_row(form.dpo) }}
+                {{ form_row(form.technical_contact) }}
+                {{ form_row(form.commercial_contact) }}
 	    </div></br></br>
 
          
-	    <div class="row row-cols-1 row-cols-md-2 g-4 center">       
+	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 center">       
                 {{ form_row(form.Submit, { 'label': 'submit' }) }}
-	    </div>
+        </div>
+    {{ form_end(form) }}
 
-{{ form_end(form) }}
-    
 {% endblock %}

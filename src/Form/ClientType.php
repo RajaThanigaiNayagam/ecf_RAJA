@@ -16,23 +16,58 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('client_id', TextType::class)
-            ->add('client_secret', TextType::class)
-            ->add('client_name', TextType::class)
-            ->add('client_mail', UrlType::class)
-            ->add('active', CheckboxType::class, [
-                'label' => 'activé ou désactivé le client/partener',
-                 'label_attr' => ['class' => 'switch-custom'],
+            ->add('client_id', TextType::class, [
+                'label' => 'Entrer l\'Identification du client',
+                'label_attr' => ['rows' => '10'],
               ])
-            ->add('short_description', TextType::class)
-            ->add('full_description', TextType::class)
-            ->add('logo_url', TextType::class)
-            ->add('url', TextType::class)
-            ->add('dpo', TextType::class)
-            ->add('technical_contact', TextType::class)
-            ->add('commercial_contact', TextType::class)
+            ->add('client_secret', TextType::class, [
+                'label' => 'Entrer la code secret du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('client_name', TextType::class, [
+                'label' => 'Entrer le nom du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('client_mail', UrlType::class, [
+                'label' => 'Entrer l\'E-mail du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('active', CheckboxType::class, [
+                'label' => 'Choisser l\'activé ou désactivé du client/partener',
+                'label_attr' => ['class' => 'switch-custom'],
+              ])
+            ->add('short_description', TextType::class, [
+                'label' => 'Entrer le desctiption courte du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('full_description', TextType::class, [
+                'label' => 'Entrer le description complete client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('logo_url', TextType::class, [
+                'label' => 'Entrer l\'URL logo du client client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('url', TextType::class, [
+                'label' => 'Entrer l\'URL du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('dpo', TextType::class, [
+                'label' => 'Entrer le DPO du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('technical_contact', TextType::class, [
+                'label' => 'Entrer le contact technique du client',
+                'label_attr' => ['rows' => '10'],
+              ])
+            ->add('commercial_contact', TextType::class, [
+                'label' => 'Entrer le contact commercial du client',
+                'label_attr' => ['rows' => '10'],
+              ])
             //->add('install_id', TextType::class)
-            ->add('Submit', SubmitType::class);
+            ->add('Submit', SubmitType::class, [
+                'label' => 'Envoyer',
+              ]);
         ;
     }
 
