@@ -33,7 +33,10 @@ class ClientType extends AbstractType
                 'label_attr' => ['rows' => '10'],
               ])
             ->add('active', CheckboxType::class, [
-                'label' => 'Choisser l\'activé ou désactivé du client/partener',
+                'label' => 'Choissez pour activé ou désactivé le client',
+                'data' => false,
+                'required' => 0,
+                'value' => 1,
                 'label_attr' => ['class' => 'switch-custom'],
               ])
             ->add('short_description', TextType::class, [

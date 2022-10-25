@@ -15,16 +15,58 @@ body
 .marginleft
 {
 	position: relative;
-	left: 30px;
+	left: 10px;
 	align-content: center;
 }
 
+
+label{
+	color: #739E32;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+
+button[type="submit"]
+{
+	background: #739E32;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: white;
+	outline: none;
+	outline-color: #739E32;
+}
+
+
+
+button[type="submit"]:hover{
+	background: #AED77B;
+}	
+
+
+
+h2, .card-title{
+	color: #739E32;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+	
+.card-text{
+	color: #AED77B;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+
+
+
 input[type="checkbox"]
 {
-	width: 80px;
-	height: 40px;
+	width: 60px;
+	height: 30px;
 	-webkit-appearance: none;
-	background: #739E32;
+	background: #9C301F;
 	outline: none;
 	border-radius: 20px;
 	box-shadow: inset 3px 3px 6px rgba(0,0,0,0.4);
@@ -34,61 +76,62 @@ input[type="checkbox"]
 
 input[type="checkbox"]:hover
 {
-	background: #AED77B;
+	background: #D97867;
 }
 
 
 input[type="checkbox"]:before
 {
 	content: '';
+	left: -3% ;
+	font-size: 0.8rem;
 	background: radial-gradient(rgb(240, 239, 245), rgb(233, 237, 243), rgb(223, 230, 240));
-	width: 40px;
-	height: 40px;
+	background: #FFF;
+	width: 36px;
+	height: 30px;
 	position: absolute;
-	border-radius: 50%;
-	top:0;
-	left:0;
+	border-radius: 47%;
 	transition: all .5s;
 	z-index: 2;
 }
 
-input[type="checkbox"]:after
+input:checked[type="checkbox"]:before
 {
-	content: 'ON';
+	content: '';
 	position: absolute;
-	font-size: 1rem;
-	color: #333;
 	font-weight: 700;
-	top:50%;
+	top: 0%;
 	left:50%;
-	transform: translate(20%, -50%);
+	transform: translate(0%, 0%);
 	z-index: 1;
 }
 
 
 input:checked[type="checkbox"]
 {
-
-	background: #9C301F;
+	background: #739E32;
 }
 
 
-input:checked[type="checkbox"]:before
+input:checked[type="checkbox"]::before
 {
-	left: 50% ;
+	transform: translate(0%, 0%);
 }
 
 
-input:checked[type="checkbox"]:after
+input[type="checkbox"]:after
 {
-	content: 'OFF';
-	left: 0;
+	content: 'ON .OFF';
+	position: absolute;
+	font-size: 0.8rem;
+	font-weight: 700;
+	top: 18%;
+	left: 12%;
 	color: #FFF;
 }
 
 input:checked[type="checkbox"]:hover{
-
-	background: #D97867;
+	background: #AED77B;
 }
 
 input[type="text"]{
