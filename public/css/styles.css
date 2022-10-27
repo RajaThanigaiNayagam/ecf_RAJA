@@ -15,7 +15,7 @@ body
 .marginleft
 {
 	position: relative;
-	left: 10px;
+	left: 30px;
 	align-content: center;
 }
 
@@ -45,16 +45,16 @@ button[type="submit"]:hover{
 
 
 
-h2, .card-title{
+h2, .navbar-brand, .card-title{
 	color: #739E32;
 	font-size: 0.8rem;
 	font-weight: 700;
 }
 
 	
-.card-text{
+.card-text, .client-active{
 	color: #AED77B;
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	font-weight: 700;
 }
 

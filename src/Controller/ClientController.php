@@ -75,6 +75,18 @@ class ClientController extends AbstractController
     }
     
 
+    /**
+     * @Route("/{id}", name="app_cli")
+     */
+    public function client(ApiClients $apiclients): Response
+    {
+        return $this->render('client/client.html.twig', [
+            'name' => $apiclients->getName(),
+            'url' => $apiclients->getUrl(),
+        ]);
+    }
+
+
 }
 
 
