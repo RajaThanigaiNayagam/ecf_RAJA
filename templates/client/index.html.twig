@@ -5,75 +5,43 @@
 {% block body %}
 <h2>Tous les clients</h2>
 <div class="marginleft">
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    
-    {% for client in clients %}
-        <div class="col">
-            <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 27rem;">
-                <div class="card-body">  
-                    <div class="row">
-                        <div class="col-sm-3 row-cols-md-3 row-cols-lg-3">
-                            <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
-                                <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
-                            </a>
-                        </div>
-                        <div class="col-sm-9 row-cols-md-9 row-cols-lg-9">
-                            <div>
-                                <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
-                                <div class="card-text">
-                                    client active - {{ client.getId() }}<br>
-                                    client active - {{ client.getClientName() }}<br>
-                                    client active - {{ client.getShortDescription() }}<br>
-                                    client url - {{ client.getUrl() }}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        
+        {% for client in clients %}
+            <div class="col">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 27rem;">
+                    <div class="card-body">  
+                        <div class="row">
+                            <div class="col-sm-3 row-cols-md-3 row-cols-lg-3">
+                                <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
+                                    <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col-sm-9 row-cols-md-9 row-cols-lg-9">
+                                <div>
+                                    <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
+                                    <div class="card-text">
+                                        client id - {{ client.getId() }}<br>
+                                        Nom - {{ client.getClientName() }}<br>
+                                        Description courte     - {{ client.getShortDescription() }}<br>
+                                        Url - {{ client.getUrl() }}
+                                    </div>
                                 </div>
                             </div>
+                                <div class="client-active">
+                                    client active - {{ client.isActive() }}
+                                </div>
                         </div>
-                        
-                            <div class="client-active">
-                                client active - {{ client.isActive() }}
-                            </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    {% endfor %}
-</div>
-
-
- <table>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    
-        {% for client in clients %}
-        <tr>
-            <th>
-                        <div class="col-sm"*>
-                            <div class="client-active">
-                                <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
-                                    <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="100" height="70">
-                                </a>
-                            </div>
-                                client active - {{ client.isActive() }}
-                        <div>
-            </th>
-            <th>
-                        <div class="col-sm">
-                        
-                                
-                                <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
-                                 
-                            <div class="client-active">
-                                    client active - {{ client.getId() }}<br>
-                                    client active - {{ client.getClientName() }}<br>
-                                    client active - {{ client.getShortDescription() }}<br>
-                                    client url - {{ client.getUrl() }}
-                            </div>
-                      
-                        </div>
-            </th>
         {% endfor %}
-        </tr>
     </div>
- </table>
+
+</div>
+<div class="navigation d-flex justify-content-center pagin-nav">
+    {{ knp_pagination_render(clients, 'pagina/pagination.html.twig') }}
+    
 </div>
 {% endblock %}

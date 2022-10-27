@@ -6,6 +6,7 @@ use App\Form\ClientType;
 use App\Entity\ApiClients;
 use App\Repository\ApiClientsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,30 +17,22 @@ class ClientController extends AbstractController
     /**
      * @Route("/client", name="app_client")
      */
-    public function index(ApiClientsRepository $apiClientsRepository, EntityManagerInterface $em, Request $request): Response
+    public function index(
+        ApiClientsRepository $apiClientsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+    ): Response
     {
-        $apiclients = new ApiClients();
+        $data = $apiClientsRepository->findAll();
         
-
-        $form = $this->createForm(ClientType::class, $apiclients);
-        $form->handleRequest($request);
-
-        
-        //dd($apiclients);
-
-        if ( $form->isSubmitted() && $form->isValid() )  {
-            $apiclients = $form->getData();
-
-
-            $em->persist($apiclients);
-            $em->flush();
-            
-            return $this->redirectToRoute('app_client');
-        }
+        $clients = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            6 /** nomber de clients a afficher */
+        );
 
         return $this->render('client/index.html.twig', [
-            'form' => $form->createView(),
-            'clients' => $apiClientsRepository->findAll(),
+            'clients' => $clients,
         ]);
     }
 
