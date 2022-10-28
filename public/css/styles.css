@@ -58,16 +58,93 @@ h2, .navbar-brand, .card-title{
 	font-weight: 700;
 }
 
+li {
+    float: left;
+    list-style: outside none none;
+    padding-left: 5px;
+}
+
 .pagin-nav {
 	color: #739E32;
 	font-size: 0.8rem;
 	font-weight: 700;
 }
 
-
-.page-link {
-	background: #8CC544;
+/* paginaton css*/
+.pagination, .ul, .li {
+	border-width: 0;
 }
+
+.clients {
+	color: #739E32;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+.clients a{
+	color: #AED77B;
+}
+
+
+
+.clients a:hover ,.reservations a:focus , .reservations a:visited{
+    color:red;
+	background: #739E32;
+}
+
+
+
+.pagination > li > .desabled {
+    background-color: #9e3244;
+    color: #BF3E26;
+	padding: 0, 0;
+	border-width: unset;
+
+}
+
+
+.pagination > li > a,
+.pagination > li > span{
+    background-color: #739E32;
+    color: black;
+	border-width: 0px;
+}
+/*hover*/
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{
+    background-color: #8CC544;
+    color: #FFF;
+}
+
+.pagination > .active > span::after{
+    background-color: #739E32;
+
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus{
+    background-color: #739E32;
+    color: #ffffff;
+    border: 1px solid #dddddd;
+}
+
+.pagination:active {
+	border: 0rem;
+}
+
+
+
+
+
+/* END paginaton css*/
+
+
 
 
 

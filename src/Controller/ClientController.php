@@ -28,10 +28,13 @@ class ClientController extends AbstractController
         $clients = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            6 /** nomber de clients a afficher */
+            2 /** nomber de clients a afficher */
         );
 
+        
+
         return $this->render('client/index.html.twig', [
+        //return $this->render('pagina/pagination.html.twig', [
             'clients' => $clients,
         ]);
     }

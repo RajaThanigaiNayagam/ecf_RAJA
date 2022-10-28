@@ -9,7 +9,7 @@
         
         {% for client in clients %}
             <div class="col">
-                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 27rem;">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 21rem;">
                     <div class="card-body">  
                         <div class="row">
                             <div class="col-sm-3 row-cols-md-3 row-cols-lg-3">
@@ -40,7 +40,10 @@
     </div>
 
 </div>
-<div class="navigation d-flex justify-content-center pagin-nav">
+<div id="paginate" class="navigation d-flex justify-content-center pagin-nav">
+    {% block page %}
+    {% endblock %}
+
     {{ knp_pagination_render(clients, 'pagina/pagination.html.twig') }}
     
 </div>
