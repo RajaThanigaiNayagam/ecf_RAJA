@@ -16,6 +16,7 @@ class ClientController extends AbstractController
 {
     /**
      * @Route("/client", name="app_client")
+     * @Route("/", name="app_client")
      */
     public function index(
             ApiClientsRepository $apiClientsRepository,
