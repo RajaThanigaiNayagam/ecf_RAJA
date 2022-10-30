@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Client/Partener Salle de sport</a>
+            <a class="navbar-brand" href="">Client/Partener Salle de sport</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,9 +36,22 @@
 		{% block javascripts %}
             <!-- JavaScript Bundle with Popper -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+           
+
             <script>
-                $(document).ready(function(){
-                    document.getElementsByClassName("active").backgroundColor = "red";
+                const selectElement1 = document.querySelector('.clientsname');
+
+                selectElement1.addEventListener('change', (event1) => {
+                    const result1 = document.querySelector('.result1');
+                    //result1.textContent = window.location.hostname + 'client/' + event1.target.value;
+                    location.href = 'client/' + event1.target.value;
+                });
+                const selectElement2 = document.querySelector('.clientsid');
+
+                selectElement2.addEventListener('change', (event2) => {
+                    const result2 = document.querySelector('.result2');
+                    location.href = event2.target.value;
+                    result2.textContent = event2.target.value;
                 });
             </script>
 

@@ -1,21 +1,27 @@
 body
 {
-	margin: 0;
+	margin: auto;
 	padding: 0;
 	background: #f3f3f3;
+	-webkit-tap-highlight-color: transparent;
 }
 
 
 .center
 {
+    float: left;
 	position: relative;
-	left: 40%;
+	left: 30px;
 }
 
 .marginleft
 {
 	position: relative;
+	margin-left: auto;
+	margin-right: 30px; 
 	left: 30px;
+	right:30px;
+	top: 30px;
 	align-content: center;
 }
 
@@ -50,6 +56,13 @@ h2, .navbar-brand, .card-title{
 	font-size: 0.8rem;
 	font-weight: 700;
 }
+
+
+
+.navbar-brand:hover{
+	background: #AED77B;
+}
+
 
 	
 .card-text, .client-active{
@@ -144,10 +157,55 @@ li {
 
 /* END paginaton css*/
 
+/*----------------------------------------------------------------*/
+
+/*    begin enter  client name    */
+input[id="clientname-list"]
+{
+	width: 200px;
+	border-color: #739E32;
+	border-color: #739E32;
+}
+
+
+input[id="clientname-list"]:hover
+{	
+	border-color: #AED77B;
+}
+
+input[id="clientname-list"]:active
+{	
+	border-color: #AED77B;
+	border-color: #739E32;
+}
+
+
+input[id="clientid-list"]
+{
+	width: 200px;
+	border-color: #739E32;
+	border-color: #739E32;
+}
+
+
+input[id="clientid-list"]:hover
+{	
+	border-color: #AED77B;
+}
+
+input[id="clientid-list"]:active
+{	
+	border-color: #AED77B;
+	color: #739E32;
+}
+/*    end enter  client name    */
 
 
 
+/*----------------------------------------------------------------*/
 
+
+/*   begin checkbox   */
 input[type="checkbox"]
 {
 	width: 60px;
@@ -221,6 +279,13 @@ input:checked[type="checkbox"]:hover{
 	background: #AED77B;
 }
 
+
+
+/*   begin checkbox   */
+
+
+
+
 input[type="text"]{
 	width: 300px;
 	border-color: #739E32;
@@ -230,3 +295,4 @@ input[type="text"]:hover{
 	width: 300px;
 	border-color: #AED77B;
 }
+

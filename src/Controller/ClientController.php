@@ -18,23 +18,24 @@ class ClientController extends AbstractController
      * @Route("/client", name="app_client")
      */
     public function index(
-        ApiClientsRepository $apiClientsRepository,
-        PaginatorInterface $paginator,
-        Request $request
-    ): Response
+            ApiClientsRepository $apiClientsRepository,
+            PaginatorInterface $paginator,
+            Request $request
+        ): Response
     {
-        $data = $apiClientsRepository->findAll();
+        $clientssearch = $apiClientsRepository->findAll();
         
         $clients = $paginator->paginate(
-            $data,
+            $clientssearch,
             $request->query->getInt('page', 1),
-            2 /** nomber de clients a afficher */
+            3 /** nomber de clients a afficher */
         );
 
         
 
         return $this->render('client/index.html.twig', [
         //return $this->render('pagina/pagination.html.twig', [
+            'clientssearch' => $clientssearch,
             'clients' => $clients,
         ]);
     }
@@ -51,8 +52,6 @@ class ClientController extends AbstractController
         $form = $this->createForm(ClientType::class, $apiclients);
         $form->handleRequest($request);
 
-        
-        //dd($apiclients);
 
         if ( $form->isSubmitted() && $form->isValid() )  {
             $apiclients = $form->getData();
@@ -72,13 +71,41 @@ class ClientController extends AbstractController
     
 
     /**
-     * @Route("/{id}", name="app_cli")
+     * @Route("/{id}", name="app_cliid")
      */
-    public function client(ApiClients $apiclients): Response
+    public function client(ApiClients $apiclient, Request $request): Response
     {
         return $this->render('client/client.html.twig', [
-            'name' => $apiclients->getName(),
-            'url' => $apiclients->getUrl(),
+            'client'      => $apiclient,
+        ]);
+    }
+
+    
+    /**
+     * @Route("client/{name}", name="app_cliname")
+     */
+    public function clientsearch(
+        string $name,
+        ApiClientsRepository $apiClientsRepository,
+        PaginatorInterface $paginator,
+        Request $request
+        ): Response
+    {
+        $data = $apiClientsRepository->findAll();
+        $clientssearch = $apiClientsRepository->findBy(['client_name' => $name]);
+        
+        $clients = $paginator->paginate(
+            $clientssearch,
+            $request->query->getInt('page', 1),
+            3 /* nomber de clients a afficher */
+        );
+
+        
+
+        return $this->render('client/clientsearch.html.twig', [
+        //return $this->render('pagina/pagination.html.twig', [
+            'clientssearch' => $data,
+            'clients' => $clients,
         ]);
     }
 
