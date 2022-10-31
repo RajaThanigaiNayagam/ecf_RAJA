@@ -42,26 +42,27 @@ class ClientController extends AbstractController
     
 
     /**
-     * @Route("client/{id}", name="app_cliid", defaults={"id"=38} )
+     * @Route("search/client/{id}", name="app_cliid", defaults={"id"=38} )
      */
     public function client(
-        string $clientid,
+        string $id,
         ApiClientsRepository $apiClientsRepository,
         ApiInstallPermRepository $apiInstallPermRepository,
         ApiClients $apiclient
         ): Response
     {
-        //$resultclient = $this->getDoctrine()->getRepository(ApiClients::class);
+        $sallessearch='';
+        $resultclient = $this->getDoctrine()->getRepository(ApiClients::class);
 
         $installdata = $apiInstallPermRepository->findAll();
-        $installsearch = $apiInstallPermRepository->findBy(['client_id' => $clientid]);
-        dump($installsearch);
+        $installsearch = $apiInstallPermRepository->findBy(['client_id' => $id]);
 
         $data = $apiClientsRepository->findAll();
-        $clientssearch = $apiClientsRepository->findBy(['active' => $clientid]);
+        $clientssearch = $apiClientsRepository->findBy(['active' => $id]);
 
         // Cette route affiche les detail d'un client
         return $this->render('client/client.html.twig', [
+            'sallessearch'      => $sallessearch,
             'client'      => $apiclient,
         ]);
     }
@@ -79,7 +80,7 @@ class ClientController extends AbstractController
         ): Response
     {
         $data = $apiClientsRepository->findAll();
-        $sallessearch = $apiClientsRepository->findBy(['client_id' => $clientid]);
+        $clientssearch = $apiClientsRepository->findBy(['client_id' => $clientid]);
 
         $clients = $paginator->paginate(
             $clientssearch,
@@ -91,7 +92,6 @@ class ClientController extends AbstractController
             'searchactive' => '',
             'clientssearch' => $data,
             'clients'      => $clients,
-            'sallessearch'      => $sallessearch,
         ]);
     }
 
@@ -135,7 +135,8 @@ class ClientController extends AbstractController
         Request $request
         ): Response
     {
-        if ($active){ $searchactive = 1; } else { $searchactive = 0; };
+        $searchactive = 0;
+        if ($active == 'true'){ $searchactive = 1; } else { $searchactive = 0; };
         //Route pour chercher des clients/Partenaires  -  activé/désactivé
         
         $data = $apiClientsRepository->findAll();

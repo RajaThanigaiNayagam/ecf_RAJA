@@ -21,7 +21,6 @@
                 </datalist> 
             </div>
             <div class="card-text result1" style="height : 10px;"></div>
-            <div class="card-text result2" style="height : 10px;"></div>
             <div class="row justify-content-center" style="width: 100%;">
                 <div class="col d-flex justify-content-center card-title">Lister les Clients/Partenaire Activé ou désactivé --{{ searchactive }}</div>
                 <div class="col d-flex justify-content-center">
@@ -74,8 +73,8 @@
                                 <div>
                                     <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
                                     <div class="card-text">
-                                        client id - {{ client.getId() }}<br>
-                                        Nom - {{ client.getClientName() }}<br>
+                                        client Num - {{ client.getId() }}<br>
+                                        Client id - {{ client.getClientId() }}<br>
                                         Description courte     - {{ client.getShortDescription() }}<br>
                                         Url - {{ client.getUrl() }}
                                     </div>
