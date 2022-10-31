@@ -1,29 +1,85 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Client/Partenaire{% endblock %}
+{% block title %}Les Client/Partenaire{% endblock %}
 
 {% block body %}
 
-<div class="container p-3 my-3 border row" >
-    <div class="col col-sm-6" style="margin: 10px;">
-        <div class="card-text">
-            <a href="{{ path('app_client') }}">
-                retour au page clients
-            </a>
+<h2>Les Detail du client/partenaire</h2>
+
+<div class="marginleft d-flex justify-content-center">
+    <div class="container p-3 my-3 border row" >
+        <div class="col col-sm-6" style="margin: 10px;">
+            <div class="card-title">
+                <a href="{{ path('app_client') }}">
+                    <h5 class="card-title">&laquo;&laquo;&nbsp;&nbsp; liste Client/Partenaire</h5>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex justify-content-center">
-        <div class="card-body"> 
-            <div>
-                <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
-                <div class="card-text">
-                    client active - {{ client.isActive() }}<br>
-                    client mail - {{ client.getClientMail() }}
+<div class="marginleft" style="margin : auto;">
+    <div class="row" style="margin : auto;">
+        <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-0 borders d-flex justify-content-center">
+            <div class="card shadow p-3 bg-white rounded " style="width: 50em;">
+                <div class="card-body"> 
+                    <div> 
+                        <div class="row" style="text-align : start;">
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width: 80px; text-align : start;">
+                                <a href="{{ path('app_cliid', {'id': client.getId() }) }}">
+                                    <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col col-sm-7 row-cols-md-7 row-cols-lg-7" style="width: 300px; text-align : start;">
+                                <h5 class="card-title">{{ client.getClientName() }}</h5>
+                                <div class="card-text">
+                                    l'ID du client  - {{ client.getClientId() }}<br>
+                                    Nom du client   - {{ client.getClientName() }}<br>
+                                    client Description complet     - {{ client.getFullDescription() }}<br>
+                                </div>
+                            </div>
+                            <div class="col col-sm-7 row-cols-md-7 row-cols-lg-7" style="width: 300px; text-align : start;">
+                                <div class="card-text">
+                                    url du client  - {{ client.getUrl() }}<br>
+                                    client DPO - {{ client.getDpo() }}<br>
+                                    Contact Techinique - {{ client.getTechnicalContact() }}<br>
+                                    Contact Commerciale - {{ client.getCommercialContact() }}<br>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-0 borders  d-flex justify-content-center">
+            <div class="card shadow p-3 bg-white rounded " style="width: 50em;">
+                <div class="card-body"> 
+                    <div> 
+                        <div class="row" style="text-align : start;">
+                            <div class="col" style="width: 80px; text-align : start;">
+                                <a href="{{ path('app_cliid', {'id': client.getId() }) }}">
+                                    <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col" style="width: 300px; text-align : start;">
+                                <div class="card-text">
+                                </div>
+                            </div>
+                            <div class="col" style="width: 300px; text-align : start;">
+                                <div class="card-text">
+                                    url du client  - {{ client.getUrl() }}<br>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
 

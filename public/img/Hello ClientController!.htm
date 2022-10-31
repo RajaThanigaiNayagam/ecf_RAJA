@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			Hello ClientController!		</title>
+        <script src="Hello%20ClientController!_fichiers/jquery-1.9.1.min.js"></script>
+		            <link rel="stylesheet" href="Hello%20ClientController!_fichiers/styles.css">
+			<link href="Hello%20ClientController!_fichiers/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		    </head>
+    <body>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://symfony.localhost/">Client/Partener Salle de sport</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://symfony.localhost/">Tous les clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="http://symfony.localhost/#addclient">Ajouter un client</a>
+                    </li>
+                </ul>
+            </div>
+		</div>
+
+
+        
+<div class="container p-3 my-3 border row" style="margin: auto; ">
+    <div class="col col-sm-5 d-flex justify-content-center">
+        <div class="card-text justify-content-center">
+            <div class="card-title justify-content-center">
+                Entrez le nom a chercher
+            </div>
+            <div class="card-title justify-content-center">
+                <input class="clientsname" list="clientsname" name="clientname-list" id="clientname-list">
+                <datalist id="clientsname">
+                    
+                        <option id="/client/Raja%20Thanigai" value="/client/Raja%20Thanigai">
+                            Raja Thanigai
+                        </option> 
+                    
+                        <option id="/client/Raja%20Thanigai" value="/client/Raja%20Thanigai">
+                            Raja Thanigai
+                        </option> 
+                    
+                        <option id="/client/Raja%20Thanigai" value="/client/Raja%20Thanigai">
+                            Raja Thanigai
+                        </option> 
+                    
+                        <option id="/client/qsdfqsdff" value="/client/qsdfqsdff">
+                            qsdfqsdff
+                        </option> 
+                    
+                        <option id="/client/Aaron%20ABON" value="/client/Aaron%20ABON">
+                            Aaron ABON
+                        </option> 
+                    
+                        <option id="/client/Raja%20Thanigai" value="/client/Raja%20Thanigai">
+                            Raja Thanigai
+                        </option> 
+                    
+                        <option id="/client/Abbes%20ABONS" value="/client/Abbes%20ABONS">
+                            Abbes ABONS
+                        </option> 
+                    
+                        <option id="/client/Aaron%20ABON" value="/client/Aaron%20ABON">
+                            Aaron ABON
+                        </option> 
+                                    </datalist> 
+            </div>
+            <div class="card-text result1" style="height : 10px;">test</div>
+            <div class="card-text result2" style="height : 10px;"></div>
+            <div class="row justify-content-center" style="width: 100%;">
+                <div class="col d-flex justify-content-center card-title">Lister les Clients/Partenaire Activé ou désactivé </div>
+                <div class="col d-flex justify-content-center">
+                    <input type="checkbox" class="client_active_search" value="/activeclient/ac" checked="checked">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-sm-5 d-flex justify-content-center">
+        <div class="card-text justify-content-center">
+            <div class="card-title justify-content-center">
+                  Entrez l'id du client a chercher
+            </div>
+            <div class="card-text d-flex justify-content-center">
+                <input class="clientsid" list="clientsid" name="clientid-list" id="clientid-list">
+                <datalist id="clientsid">
+                                            <option value="/clientid/raja">
+                            raja
+                        </option>
+                                            <option value="/clientid/raja">
+                            raja
+                        </option>
+                                            <option value="/clientid/raja">
+                            raja
+                        </option>
+                                            <option value="/clientid/qsdfqsdf">
+                            qsdfqsdf
+                        </option>
+                                            <option value="/clientid/raja">
+                            raja
+                        </option>
+                                            <option value="/clientid/anael">
+                            anael
+                        </option>
+                                            <option value="/clientid/Abbes">
+                            Abbes
+                        </option>
+                                            <option value="/clientid/aaron">
+                            aaron
+                        </option>
+                                    </datalist> 
+                <div class="result3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="marginleft d-flex justify-content-center">
+    <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-4 border d-flex justify-content-center" style="left: 10px;">
+       
+                   <div class="col d-flex justify-content-center" style="left: auto;">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 420px;">
+                    <div class="card-body">  
+                        <div class="row">
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30%">
+                                <a href="http://symfony.localhost/30">
+                                    <img class="fit-picture" src="Hello%20ClientController!_fichiers/preview.jpg" width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70%">
+                                <div>
+                                    <h5 class="card-title">client name - Raja Thanigai</h5>
+                                    <div class="card-text">
+                                        client id - 30<br>
+                                        Nom - Raja Thanigai<br>
+                                        Description courte     - desctiption courte<br>
+                                        Url - www.google.fr
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="client-active">
+                                    client active - 
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="col d-flex justify-content-center" style="left: auto;">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 420px;">
+                    <div class="card-body">  
+                        <div class="row">
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30%">
+                                <a href="http://symfony.localhost/32">
+                                    <img class="fit-picture" src="Hello%20ClientController!_fichiers/fitness-logo-strong-arm-logo-400-182096515.jpg" width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70%">
+                                <div>
+                                    <h5 class="card-title">client name - Raja Thanigai</h5>
+                                    <div class="card-text">
+                                        client id - 32<br>
+                                        Nom - Raja Thanigai<br>
+                                        Description courte     - raja<br>
+                                        Url - www.google.fr
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="client-active">
+                                    client active - 
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="col d-flex justify-content-center" style="left: auto;">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 420px;">
+                    <div class="card-body">  
+                        <div class="row">
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30%">
+                                <a href="http://symfony.localhost/35">
+                                    <img class="fit-picture" src="Hello%20ClientController!_fichiers/5347923-fitness-logo-design-vector-adapte-au-logo-de-votre-e.jpg" width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70%">
+                                <div>
+                                    <h5 class="card-title">client name - Raja Thanigai</h5>
+                                    <div class="card-text">
+                                        client id - 35<br>
+                                        Nom - Raja Thanigai<br>
+                                        Description courte     - raja<br>
+                                        Url - www.google.fr
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="client-active">
+                                    client active - 
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+
+</div>
+
+<div class="marginleft" style="top : 30px">
+    <div id="paginate" class="navigation d-flex justify-content-center pagin-nav">
+                
+            <nav>
+                        <ul class="pagination">
+
+                            <li class="page-item disabled">
+                    <span class="page-link" rel="prev">«&nbsp;Previous</span>
+                </li>
+            
+            
+                                                <li class="page-item active">
+                        <span class="page-link">1</span>
+                    </li>
+                
+                                                <li class="page-item">
+                        <a class="page-link" href="http://symfony.localhost/client/Raja%20Thanigai?page=2">2</a>
+                    </li>
+                
+            
+            
+                            <li class="page-item">
+                    <a class="page-link" rel="next" href="http://symfony.localhost/client/Raja%20Thanigai?page=2">Next&nbsp;»</a>
+                </li>
+                    </ul>
+    </nav>
+
+    </div>
+</div>
+
+		            <!-- JavaScript Bundle with Popper -->
+            <script src="Hello%20ClientController!_fichiers/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+           
+
+            <script>
+                const selectElement1 = document.querySelector('.clientsname');
+
+                selectElement1.addEventListener('change', (event1) => {
+                    const result1 = document.querySelector('.result1');
+                    var listObj = document.getElementById("clientname-list");
+                    var datalist = document.getElementById(listObj.getAttribute("list"));
+
+                    result1.textContent = datalist.options.namedItem(listObj.value).id;
+                    //location.href = "/";
+                    //result1.textContent = 'precedent page - ' + location.href + "/";
+                    //document.write('precedent page - ' + location.href + "/");
+                    //location.href = document.referrer + 'client/' + event1.target.value;
+                    location.href = datalist.options.namedItem(listObj.value).id;
+                    
+                });
+                const selectElement2 = document.querySelector('.clientsid');
+
+                selectElement2.addEventListener('change', (event2) => {
+                    const result2 = document.querySelector('.result2');
+                    //location.href = "/";
+                    //result2.textContent = "/";
+                    //location.href = document.referrer + 'clientid' + event2.target.value;
+                    location.href = event1.target.value;
+                });
+                const selectElement3 = document.querySelector('.client_active_search');
+
+                selectElement3.addEventListener('change', (event3) => {
+                    const result3 = document.querySelector('.result3');
+                    //location.href = event2.target.value;
+                    //location.href = document.referrer;
+                    //location.href = "/";
+                    //result3.textContent = "/";
+                    //location.href = document.referrer + 'activeclient/' + event3.target.checked;
+                    location.href = event3.target.value + event3.target.checked;
+                });
+            </script>
+
+
+            
+
+</body></html>

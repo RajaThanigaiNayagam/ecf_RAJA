@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientController!{% endblock %}
+
+{% block body %}
+<h2>Tous les clients</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    
+    {% for client in clients %}
+        <div class="col">
+            <div class="card shadow p-3 mb-5 bg-white rounded  marginleft" style="width: 22rem;">
+                <div class="card-body">  
+                    <div class="row">
+                        <div class="col-sm-3 row-cols-md-3 row-cols-lg-3">
+                            <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
+                                <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
+                            </a>
+                        </div>
+                        <div class="col-sm-9">
+                            <div>
+                                <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
+                                <div class="card-text">
+                                    client active - {{ client.isActive() }}<br>
+                                    client mail - {{ client.getClientMail() }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+   
+<!-- Ajouter un client-->
+    {{ form_start(form) }}
+	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 marginleft">
+                {{ form_row(form.client_id) }}
+                {{ form_row(form.client_name) }}
+                {{ form_row(form.client_mail) }}
+                {{ form_row(form.active) }}
+                {{ form_row(form.client_secret) }}
+
+                
+                {{ form_row(form.short_description) }}
+                {{ form_row(form.full_description) }}
+                {{ form_row(form.logo_url) }}
+                {{ form_row(form.url) }}
+
+                
+                {{ form_row(form.dpo) }}
+                {{ form_row(form.technical_contact) }}
+                {{ form_row(form.commercial_contact) }}
+	    </div></br></br>
+
+         
+	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 center">       
+                {{ form_row(form.Submit, { 'label': 'envoyer', 'id': 'envoyer', 'name': 'send' }) }}
+        </div></br></br>
+    {{ form_end(form) }}
+
+
+{% endblock %}

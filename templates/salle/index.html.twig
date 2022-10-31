@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SalleController!{% endblock %}
+
+{% block body %}
+
+<div class="container p-3 my-3 border row" style="margin: auto; ">
+    <div class="col col-sm-5 d-flex justify-content-center">
+        <div class="card-text justify-content-center">
+            <div class="card-title justify-content-center">
+                Entrez le salle a chercher
+            </div>
+            <div class="card-title justify-content-center">
+                <input class="sallesname" list="sallesname" name="sallesname-list" id="sallesname-list">
+                <datalist id="sallesname">
+                    <!--
+
+
+
+
+                    -->
+                </datalist> 
+            </div>
+            <div class="card-text result1" style="height : 10px;"></div>
+            <div class="card-text result2" style="height : 10px;"></div>
+            <div class="row justify-content-center" style="width: 100%;">
+                <div class="col d-flex justify-content-center card-title">Lister les Salle/Install Activé ou désactivé --{{ searchactive }}</div>
+                <div class="col d-flex justify-content-center">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-sm-5 d-flex justify-content-center">
+        <div class="card-text justify-content-center">
+            <div class="card-title justify-content-center">
+                  Entrez l'id du salle a chercher
+            </div>
+            <div class="card-text d-flex justify-content-center">
+                <input class="sallesid"  list="sallesid" name="sallesid-list" id="sallesid-list">
+                <datalist id="sallesid">
+
+                </datalist> 
+                <div class="result3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="marginleft d-flex justify-content-center">
+    <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-4 border d-flex justify-content-center" style="left: 10px;">
+       
+       {% for salle in salles %}
+            <div class="col d-flex justify-content-center" style="left: auto;">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 420px;">
+                    <div class="card-body">  
+                        <div class="row">
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30%">
+                                <a href="{{ path('app_salle', {'id': salle.BranchId() }) }}">
+                                    <img class="fit-picture" src="{{ salle.getInstallId() }}" class="card-img-top"  width="70" height="70">
+                                </a>
+                            </div>
+                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70%">
+                                <div>
+                                    <h5 class="card-title">Salle id - {{ salle.getInstallId() }}</h5>
+                                    <div class="card-text">
+                                        Members Read - {{ salle.getMembersRead() }}<br>
+                                        Members Write - {{ salle.getMembersWrite() }}<br>
+                                        Members add     - {{ salle.getMembersAdd() }}<br>
+                                        Members Read - {{ salle.getMembersPaymentSchedulesRead() }}<br>
+                                        Members Write - {{ salle.getMembersStatistiquesRead() }}<br>
+                                        Members add     - {{ salle.getMembersSubscriptionRead() }}<br>
+                                        Members Write - {{ salle.getPaymentSchedulesRead() }}<br>
+                                        Members add     - {{ salle.getPaymentSchedulesWrite() }}<br>
+                                        Members add     - {{ salle.getPaymentDayRead() }}<br>
+                                        Url - {{ salle.getUrl() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+</div>
+
+<div class="marginleft" style = "top : 30px">
+    <div id="paginate" class="navigation d-flex justify-content-center pagin-nav">
+        {% block page %}
+        {% endblock %}
+
+        {{ knp_pagination_render(salles, 'pagina/pagination.html.twig') }}
+    </div>
+</div>
+
+{% endblock %}

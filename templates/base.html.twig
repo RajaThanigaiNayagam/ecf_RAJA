@@ -15,7 +15,8 @@
     </head>
     <body>
         <div class="container-fluid">
-            <a class="navbar-brand" href="">Client/Partener Salle de sport</a>
+            <div></div><a class="navbar-brand" href="{{ path('app_client') }}">Client/Partener</a></div>
+            <div><a class="navbar-brand" href="{{ path('app_salle') }}">Salle de sport -- -- {{ path('app_salle') }}</a></div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,15 +44,40 @@
 
                 selectElement1.addEventListener('change', (event1) => {
                     const result1 = document.querySelector('.result1');
-                    //result1.textContent = window.location.hostname + 'client/' + event1.target.value;
-                    location.href = 'client/' + event1.target.value;
+                    var listObj = document.getElementById("clientname-list");
+                    var datalist = document.getElementById(listObj.getAttribute("list"));
+                        //result1.textContent = datalist.options.namedItem(listObj.value).id;
+                        //result1.textContent = listObj.value;
+                        //location.href = "{{ path('app_client') }}";
+                    //result1.textContent = 'precedent page - ' + location.href + "{{ path('app_client') }}";
+                    //document.write('precedent page - ' + location.href + "{{ path('app_client') }}");
+                    //location.href = document.referrer + 'client/' + event1.target.value;
+                    location.href = event1.target.value;;
+                    
                 });
                 const selectElement2 = document.querySelector('.clientsid');
 
                 selectElement2.addEventListener('change', (event2) => {
                     const result2 = document.querySelector('.result2');
+                    //location.href = "{{ path('app_client') }}";
+                    //result2.textContent = "{{ path('app_client') }}";
+                    //location.href = document.referrer + 'clientid' + event2.target.value;
                     location.href = event2.target.value;
-                    result2.textContent = event2.target.value;
+                });
+                const selectElement3 = document.querySelector('.client_active_search');
+
+                selectElement3.addEventListener('change', (event3) => {
+                    var res;
+                    const result3 = document.querySelector('.result1');
+                    //location.href = event2.target.value;
+                    //location.href = document.referrer;
+                    //location.href = "{{ path('app_client') }}";
+                    //result3.textContent = "{{ path('app_client') }}";
+                    //location.href = document.referrer + 'activeclient/' + event3.target.checked;
+                    res = (event3.target.value).slice(0, -2) + event3.target.checked;
+                    //result3.textContent = res;
+
+                    location.href =  res;
                 });
             </script>
 

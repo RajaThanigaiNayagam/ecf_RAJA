@@ -1,34 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ClientController!{% endblock %}
+{% block title %}Les clients/partenaire recherché{% endblock %}
 
 {% block body %}
+<h2>Les clients/partenaire recherché</h2>
 
-<div class="container p-3 my-3 border row" >
-    <div class="col col-sm-6" style="margin: 10px;">
-        <div class="card-text">
-            <a href="{{ path('app_client') }}">
-                retour au page clients
-            </a>
+<div class="marginleft d-flex justify-content-center" style="margin: auto; top: 10px;">
+    <div class="container p-3 my-3 border row" style="margin: auto;">
+        <div class="col col-sm-6">
+            <div class="card-text">
+                <a href="{{ path('app_client') }}">
+                    retour au page clients
+                </a>
+            </div>
         </div>
     </div>
 </div>
 
 
-<div class="marginleft  justify-content-center">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<div class="marginleft d-flex justify-content-center">
+    <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-4 border d-flex justify-content-center" style="left: 10px;">
         
         {% for client in clients %}
-            <div class="col">
-                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 22rem;">
+            <div class="col d-flex justify-content-center" style="left: auto;">
+                <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 420px;">
                     <div class="card-body">  
                         <div class="row">
-                            <div class="col-sm-3 row-cols-md-3 row-cols-lg-3">
-                                <a href="{{ path('app_client', {'id': client.getId() }) }}">
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30%">
+                                <a href="{{ path('app_cliid', {'id': client.getId() }) }}">
                                     <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
                                 </a>
                             </div>
-                            <div class="col-sm-9 row-cols-md-9 row-cols-lg-9">
+                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70%">
                                 <div>
                                     <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
                                     <div class="card-text">
@@ -49,14 +52,16 @@
 
         {% endfor %}
     </div>
-
 </div>
-<div id="paginate" class="navigation d-flex justify-content-center pagin-nav">
-    {% block page %}
-    {% endblock %}
 
-    {{ knp_pagination_render(clients, 'pagina/pagination.html.twig') }}
-    
+
+<div class="marginleft" style = "top : 30px">
+    <div id="paginate" class="navigation d-flex justify-content-center pagin-nav">
+        {% block page %}
+        {% endblock %}
+
+        {{ knp_pagination_render(clients, 'pagina/pagination.html.twig') }}
+    </div>
 </div>
 
 {% endblock %}
