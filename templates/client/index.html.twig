@@ -22,7 +22,7 @@
             </div>
             <div class="card-text result1" style="height : 10px;"></div>
             <div class="row justify-content-center" style="width: 100%;">
-                <div class="col d-flex justify-content-center card-title">Lister les Clients/Partenaire Activé ou désactivé --{{ searchactive }}</div>
+                <div class="col d-flex justify-content-center card-title">Lister les Clients/Partenaire Activé ou désactivé</div>
                 <div class="col d-flex justify-content-center">
                     {% if (searchactive == 'true') %} 
                         <input  type="checkbox" class="client_active_search" value="{{ path('app_cliactive', {'active': 'ac' }) }}" checked >
