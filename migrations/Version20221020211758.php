@@ -25,6 +25,8 @@ final class Version20221020211758 extends AbstractMigration
         $this->addSql('CREATE TABLE api_install_perm (id INT AUTO_INCREMENT NOT NULL, install_id_id INT NOT NULL, branch_id VARCHAR(255) NOT NULL, client_id VARCHAR(255) NOT NULL, members_read INT NOT NULL, members_write INT NOT NULL, members_add INT NOT NULL, members_payment_schedules_read INT NOT NULL, members_statistiques_read INT NOT NULL, members_subscription_read INT NOT NULL, payment_schedules_read INT NOT NULL, payment_schedules_write INT NOT NULL, payment_day_read INT NOT NULL, INDEX IDX_E8DCE66E1BE7EDD8 (install_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE api_clients_grants ADD CONSTRAINT FK_85DCB18FDC2902E0 FOREIGN KEY (client_id_id) REFERENCES api_clients (id)');
         $this->addSql('ALTER TABLE api_install_perm ADD CONSTRAINT FK_E8DCE66E1BE7EDD8 FOREIGN KEY (install_id_id) REFERENCES api_clients_grants (id)');
+        
+        $this->addSql('ALTER TABLE api_clients ADD install_id INT NULL');
     }
 
     public function down(Schema $schema): void

@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\ApiClients;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ApiClientsRepository;
 
@@ -237,18 +236,20 @@ class ApiClients
         return $this->install_id;
     }
 
-    public function setInstallId(ApiClientsGrants $install_id): self
+    public function setInstallId(ApiClientsGrants $install_id): self   //string $install_id): self //
     {
-
-        $client = new ApiClients();
         // set the owning side of the relation if necessary
         if ($install_id->getClientId() !== $this) {
             $install_id->setClientId($this);
         }
 
         $this->install_id = $install_id;
-        $client.setInstallId($install_id);
 
         return $this;
+    }
+
+    // Register Magic Method to Print the name of the State e.g California
+    public function __toString() {
+        return $this->install_id;
     }
 }

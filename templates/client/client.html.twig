@@ -16,6 +16,12 @@
             </div>
         </div>
     </div>
+    <div class="col col-sm-2 justify-content-middle">
+        <div class="row d-flex justify-content-middle">
+            <form action="{{ path('app_salleadd', {'id': client.getId() }) }}"><input type="submit" class="addsalle button" value="Ajouter Salle de Sport">  </form>
+            <div class="result3"></div>
+        </div>
+    </div>
 </div>
 
 <div class="marginleft" style="margin : auto;">
@@ -26,9 +32,9 @@
                     <div> 
                         <div class="row" style="text-align : start;">
                             <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width: 80px; text-align : start;">
-                                <a href="{{ path('app_cliid', {'id': client.getId() }) }}">
+                                <!--<a href="{{ path('app_cliid', {'id': client.getId() }) }}">
                                     <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
-                                </a>
+                                </a>-->
                             </div>
                             <div class="col col-sm-7 row-cols-md-7 row-cols-lg-7" style="width: 300px; text-align : start;">
                                 <h5 class="card-title">{{ client.getClientName() }}</h5>
@@ -46,7 +52,7 @@
                                     Contact Commerciale - {{ client.getCommercialContact() }}<br>
                                 </div>
                             </div>
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,18 +64,31 @@
                     <div> 
                         <div class="row" style="text-align : start;">
                             <div class="col" style="width: 80px; text-align : start;">
-                                <a href="{{ path('app_cliid', {'id': client.getId() }) }}">
+                                <!--<a href="{{ path('app_cliid', {'id': client.getId() }) }}">
                                     <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
-                                </a>
+                                </a>-->
                             </div>
                             <div class="col" style="width: 300px; text-align : start;">
                                 <div class="card-text">
+                                    {% if (salle) %} 
+                                        Members Read - {{ salle.getMembersRead() }}<br>
+                                        Members Write - {{ salle.getMembersWrite() }}<br>
+                                        Members add     - {{ salle.getMembersAdd() }}<br>
+                                        Members Read - {{ salle.getMembersPaymentSchedulesRead() }}<br>
+                                        Members Write - {{ salle.getMembersStatistiquesRead() }}<br>
+                                    {% endif %} 
                                 </div>
                             </div>
                             <div class="col" style="width: 300px; text-align : start;">
                                 <div class="card-text">
-                                    url du client  - {{ client.getUrl() }}<br>
-                                </div>
+                                    {% if (salle) %} 
+                                        Members add     - {{ salle.getMembersSubscriptionRead() }}<br>
+                                        Members Write - {{ salle.getPaymentSchedulesRead() }}<br>
+                                        Members add     - {{ salle.getPaymentSchedulesWrite() }}<br>
+                                        Members add     - {{ salle.getPaymentDayRead() }}<br>
+                                        Url - {{ salle.getUrl() }}
+                                    {% endif %} 
+                               </div>
                             </div>
                             </div>
                     </div>

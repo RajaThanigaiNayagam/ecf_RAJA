@@ -3,25 +3,25 @@
 {% block title %}Hello ClientController!{% endblock %}
 
 {% block body %}
-<h2>Tous les clients</h2>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<div class="d-flex justify-content-center" ><h2>Ajouté une salles</h2></div>
+
+<div class="container p-3 my-3 row" style="margin: auto;">
     
-    {% for client in clients %}
+    {% for salle in salles %}
         <div class="col">
             <div class="card shadow p-3 mb-5 bg-white rounded  marginleft" style="width: 22rem;">
                 <div class="card-body">  
                     <div class="row">
                         <div class="col-sm-3 row-cols-md-3 row-cols-lg-3">
-                            <a href="{{ path('app_client', {'id': client.getClientId() }) }}">
-                                <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
+                            <a href="">
+                                <img class="fit-picture" src="" class="card-img-top"  width="70" height="70">
                             </a>
                         </div>
                         <div class="col-sm-9">
                             <div>
-                                <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
+                                <h5 class="card-title">salle name - </h5>
                                 <div class="card-text">
-                                    client active - {{ client.isActive() }}<br>
-                                    client mail - {{ client.getClientMail() }}
+                                
                                 </div>
                             </div>
                         </div>
@@ -34,31 +34,136 @@
 </div>
    
 <!-- Ajouter un client-->
-    {{ form_start(form) }}
-	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 marginleft">
-                {{ form_row(form.client_id) }}
-                {{ form_row(form.client_name) }}
-                {{ form_row(form.client_mail) }}
-                {{ form_row(form.active) }}
-                {{ form_row(form.client_secret) }}
 
-                
-                {{ form_row(form.short_description) }}
-                {{ form_row(form.full_description) }}
-                {{ form_row(form.logo_url) }}
-                {{ form_row(form.url) }}
+<div class="marginleft d-flex justify-content-center">
+    <div class="row row-cols-1 row-cols-md-12 row-cols-lg-12 g-4 border d-flex justify-content-center" style="left: 10px;">
+    
+                    {{ form_start(form) }}
+                        <div class="row cols-sm-12 cols-md-12 cols-lg-12 g-3">
 
-                
-                {{ form_row(form.dpo) }}
-                {{ form_row(form.technical_contact) }}
-                {{ form_row(form.commercial_contact) }}
-	    </div></br></br>
+                            <div class="col">
+                                <div class="row d-flex justify-content-center" style="margin: top; ">
+                                    <div class="col card-text d-flex justify-content-center" style="top: 10px; width: 20rem;">
+                                        client-id
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.client_id) }}
+                                    </div>
+                                </div>
 
-         
-	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 center">       
-                {{ form_row(form.Submit, { 'label': 'envoyer', 'id': 'envoyer', 'name': 'send' }) }}
-        </div></br></br>
-    {{ form_end(form) }}
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col card-text d-flex justify-content-center">
+                                        install-id
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.active) }}
+                                    
+                                    </div>
+                                </div>
 
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col card-text d-flex justify-content-center">
+                                        active
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.perms) }}
+                                    </div>
+                                </div>
+
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col card-text d-flex justify-content-center">
+                                        <div></div>
+                                        branch-id
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.branch_id) }}
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center" style="width: 20rem;">
+                                        members_read
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.members_read) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        members_write
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.members_write) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        members_add
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.members_add) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        members_payment_schedules_read
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.members_payment_schedules_read) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        members_statistiques_read
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.members_statistiques_read) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        members_subscription_read
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.members_subscription_read) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        payment_schedules_read
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.payment_schedules_read) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        payment_schedules_write
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.payment_schedules_write) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col card-text border d-flex justify-content-center">
+                                        payment_day_read
+                                    </div>
+                                    <div class="col card-text d-flex justify-content-center">
+                                        {{ form_row(form.payment_day_read) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div></div></br></br>
+
+                        
+                        <div class="col  d-flex justify-content-center">       
+                                {{ form_row(form.Submit, { 'label': 'envoyer', 'id': 'envoyer', 'name': 'send' }) }}
+                        </div></br></br>
+                    {{ form_end(form) }}
+    </div>
+</div>
 
 {% endblock %}

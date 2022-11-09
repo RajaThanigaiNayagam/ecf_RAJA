@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ClientsGrantsController!{% endblock %}
+
+{% block body %}
+<!-- Ajouter un client-->
+    {{ form_start(form) }}
+	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 marginleft">
+                {{ form_row(form.install_id) }}
+                {{ form_row(form.active) }}
+                {{ form_row(form.perms) }}
+                {{ form_row(form.branch_id) }}
+                {{ form_row(form.client_id) }}
+	    </div></br></br>
+
+         <!--formclientgrants -->
+	    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 center">       
+                {{ form_row(form.Submit, { 'label': 'envoyer', 'id': 'envoyer', 'name': 'send' }) }}
+        </div></br></br>
+    {{ form_end(form) }}
+{% endblock %}

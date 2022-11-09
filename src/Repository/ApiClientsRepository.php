@@ -63,4 +63,24 @@ class ApiClientsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+        /*$query = $em->createQueryBuilder('c')
+                ->select(c, g, s)  
+                ->from(ApiClientsGrants::class g)
+                ->from(ApiInstallPerm::class s)
+
+                ->join(s.install_id g) 
+                ->where(g.install_id = :salle_id) 
+
+                INNER JOIN g.client_id c
+                WHERE c.install_id = :partenaire_id
+            ")
+            ->setParameter('salle_id', $id)
+            ->setParameter('partenaire_id', $id);
+        
+        $resultclient = $query->getQuery()->getResult();
+        dump($resultclient);*/
+
+
+
 }

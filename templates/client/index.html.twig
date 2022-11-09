@@ -4,13 +4,14 @@
 
 {% block body %}
 
-<div class="container p-3 my-3 border row" style="margin: auto; ">
-    <div class="col col-sm-5 d-flex justify-content-center">
-        <div class="card-text justify-content-center">
-            <div class="card-title justify-content-center">
+<div class="container p-3 my-3 border row" style="margin: auto; width=25rem;">
+<!--<div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-4 border d-flex justify-content-center" style="left: 10px;">-->
+    <div class="col col-sm-5 d-flex justify-content-middle">
+        <div class="card-text justify-content-middle">
+            <div class="card-title justify-content-middle">
                 Entrez le nom a chercher
             </div>
-            <div class="card-title justify-content-center">
+            <div class="card-title justify-content-middle">
                 <input class="clientsname" list="clientsname" name="clientname-list" id="clientname-list">
                 <datalist id="clientsname">
                     {% for clientsearch in clientssearch %}
@@ -21,9 +22,9 @@
                 </datalist> 
             </div>
             <div class="card-text result1" style="height : 10px;"></div>
-            <div class="row justify-content-center" style="width: 100%;">
-                <div class="col d-flex justify-content-center card-title">Lister les Clients/Partenaire Activé ou désactivé</div>
-                <div class="col d-flex justify-content-center">
+            <div class="row d-flex justify-content-middle" style="width: 100%;">
+                <div class="col d-flex justify-content-middle card-title">Clients/Partenaire Activé ou désactivé</div>
+                <div class="col d-flex justify-content-middle">
                     {% if (searchactive == 'true') %} 
                         <input  type="checkbox" class="client_active_search" value="{{ path('app_cliactive', {'active': 'ac' }) }}" checked >
                     {% elseif (searchactive == 'true') %} 
@@ -35,12 +36,12 @@
             </div>
         </div>
     </div>
-    <div class="col col-sm-5 d-flex justify-content-center">
-        <div class="card-text justify-content-center">
-            <div class="card-title justify-content-center">
+    <div class="col col-sm-5 d-flex justify-content-middle">
+        <div class="card-text d-flex justify-content-middle">
+            <div class="card-title justify-content-middle">
                   Entrez l'id du client a chercher
             </div>
-            <div class="card-text d-flex justify-content-center">
+            <div class="card-text justify-content-middle">
                 <input class="clientsid"  list="clientsid" name="clientid-list" id="clientid-list">
                 <datalist id="clientsid">
                     {% for clientsearchid in clientssearch %}
@@ -49,7 +50,6 @@
                         </option>
                     {% endfor %}
                 </datalist> 
-                <div class="result3"></div>
             </div>
         </div>
     </div>
@@ -60,23 +60,29 @@
     <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12 g-4 border d-flex justify-content-center" style="left: 10px;">
        
        {% for client in clients %}
-            <div class="col d-flex justify-content-center" style="left: auto;">
+            <div class="col d-flex justify-content-center" style="left: auto; top: 0px;">
                 <div class="card shadow p-3 mb-5 bg-white rounded " style="width: 420px;">
                     <div class="card-body">  
                         <div class="row">
-                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30%">
+                        
+                            <div class="col col-sm-3 row-cols-md-3 row-cols-lg-3" style="width=30% top: 0px;">
                                 <a href="{{ path('app_cliid', {'id': client.getId() }) }}">
                                     <img class="fit-picture" src="{{ client.getLogoUrl() }}" class="card-img-top"  width="70" height="70">
                                 </a>
                             </div>
-                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70%">
+                            <div class="col col-sm-9 row-cols-md-9 row-cols-lg-9" style="width=70% top: 0px;">
                                 <div>
                                     <h5 class="card-title">client name - {{ client.getClientName() }}</h5>
                                     <div class="card-text">
                                         client Num - {{ client.getId() }}<br>
                                         Client id - {{ client.getClientId() }}<br>
                                         Description courte     - {{ client.getShortDescription() }}<br>
-                                        Url - {{ client.getUrl() }}
+                                        Url - {{ client.getUrl() }}<br>
+                                        {% if (client.getInstallId() ) %}
+                                        {% else %}
+                                            No installation for this client
+                                        {% endif %}
+                                        Url - <br>
                                     </div>
                                 </div>
                             </div>
@@ -92,6 +98,7 @@
     </div>
 
 </div>
+
 
 <div class="marginleft" style = "top : 30px">
     <div id="paginate" class="navigation d-flex justify-content-center pagin-nav">

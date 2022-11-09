@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Form\ClientType;
 use App\Entity\ApiClients;
+use App\Entity\ApiClientsGrants;
 use App\Repository\ApiClientsRepository;
-use App\Repository\ApiInstallPermRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use App\Repository\ApiInstallPermRepository;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ApiClientsGrantsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,23 +22,26 @@ class ClientController extends AbstractController
      */
     public function index(
             ApiClientsRepository $apiClientsRepository,
+            ApiClientsGrantsRepository $apiClientsGrantsRepository,
             PaginatorInterface $paginator,
             Request $request
         ): Response
     {
         
         $clientssearch = $apiClientsRepository->findAll();
+        $subclientssearch = $apiClientsGrantsRepository->findAll();
         
         $clients = $paginator->paginate(
             $clientssearch,
             $request->query->getInt('page', 1),
             3 /** nomber de clients a afficher */
         );
-
+        
         return $this->render('client/index.html.twig', [
             'searchactive' => '',
             'clientssearch' => $clientssearch,
             'clients' => $clients,
+            'subclients' => $subclientssearch,
         ]);
     }
     
@@ -51,19 +56,18 @@ class ClientController extends AbstractController
         ApiClients $apiclient
         ): Response
     {
-        $sallessearch='';
-        $resultclient = $this->getDoctrine()->getRepository(ApiClients::class);
+        $sallessearch ='';
 
         $installdata = $apiInstallPermRepository->findAll();
         $installsearch = $apiInstallPermRepository->findBy(['client_id' => $id]);
-
-        $data = $apiClientsRepository->findAll();
-        $clientssearch = $apiClientsRepository->findBy(['active' => $id]);
+        
+        /*$data = $apiClientsRepository->findAll();
+        $clientssearch = $apiClientsRepository->findBy(['active' => $id]);*/
 
         // Cette route affiche les detail d'un client
         return $this->render('client/client.html.twig', [
-            'sallessearch'      => $sallessearch,
-            'client'      => $apiclient,
+            'salle'             => $installsearch,
+            'client'            => $apiclient,
         ]);
     }
 
@@ -79,6 +83,7 @@ class ClientController extends AbstractController
         Request $request
         ): Response
     {
+
         $data = $apiClientsRepository->findAll();
         $clientssearch = $apiClientsRepository->findBy(['client_id' => $clientid]);
 
@@ -170,16 +175,32 @@ class ClientController extends AbstractController
     {
         //Route pour ajouter un client/partenaire
         $apiclients = new ApiClients();
+        
 
         $form = $this->createForm(ClientType::class, $apiclients);
         $form->handleRequest($request);
 
+        //dump($form);
+        //dump($apiclients);
 
         if ( $form->isSubmitted() && $form->isValid() )  {
             $apiclients = $form->getData();
+            
+            //dd($request->request->get('client')['client_id']);
+            //$apiclientsgrants->setClientId($apiclients);
+            //dd($apiclientsgrants);
 
+            $apiclientsgrants = new ApiClientsGrants();
+            $apiclientsgrants->setBranchId(1);
+            $apiclientsgrants->setActive('test');
+            $apiclientsgrants->setInstallId(1);
+            $apiclientsgrants->setPerms('test');
+            $apiclientsgrants->setClientId($apiclients);
 
+            $apiclients->setInstallId($apiclientsgrants);
+    
             $em->persist($apiclients);
+            $em->persist($apiclientsgrants);
             $em->flush();
             
             return $this->redirectToRoute('app_client');
@@ -190,7 +211,10 @@ class ClientController extends AbstractController
             'clients' => $apiClientsRepository->findAll(),
         ]);
     }
-    //  END add route
+    //  END add route add
+
+
+
 
 
 

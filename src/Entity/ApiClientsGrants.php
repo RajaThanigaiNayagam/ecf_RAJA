@@ -52,7 +52,7 @@ class ApiClientsGrants
 
     public function __construct()
     {
-        $this->clientid = new ArrayCollection();
+        //$this->client_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,7 +65,7 @@ class ApiClientsGrants
         return $this->client_id;
     }
 
-    public function setClientId(ApiClients $client_id): self
+    public function setClientId(ApiClients $client_id): self  //string $client_id): self//
     {
         $this->client_id = $client_id;
 
@@ -140,5 +140,10 @@ class ApiClientsGrants
         }
 
         return $this;
+    }
+    
+    // Register Magic Method to Print the name of the State e.g California
+    public function __toString() {
+        return $this->client_id;
     }
 }

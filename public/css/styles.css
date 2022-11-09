@@ -43,6 +43,17 @@ button[type="submit"]
 
 
 
+.button
+{
+	background: #739E32;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: white;
+	outline: none;
+	outline-color: #739E32;
+}
+
+
 button[type="submit"]:hover{
 	background: #AED77B;
 }	
@@ -284,12 +295,12 @@ input:checked[type="checkbox"]:hover{
 
 
 input[type="text"]{
-	width: 300px;
+	width: 200px;
 	border-color: #739E32;
 } 
 
 input[type="text"]:hover{
-	width: 300px;
+	width: 200px;
 	border-color: #AED77B;
 }
 

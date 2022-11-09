@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\ApiClients;
+use App\Entity\ApiClientsGrants;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -67,8 +69,12 @@ class ClientType extends AbstractType
                 'label' => 'Entrer le contact commercial du client',
                 'label_attr' => ['rows' => '10'],
               ])
-            //->add('install_id', TextType::class)
-            ->add('Submit', SubmitType::class, [
+              /*->add('client_id', EntityType::class, [
+                  'class' => ApiClientsGrants::class,
+                  'choice_label' => 'client_id',
+              ])*/
+              //->add('install_id', TextType::class)
+              ->add('Submit', SubmitType::class, [
                 'label' => 'Envoyer',
               ]);
         ;
